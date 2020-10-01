@@ -1,7 +1,7 @@
 <template>
   <v-card color="grey lighten-4" flat height="200px" tile>
     <v-toolbar dense>
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="toggleSideMenu"></v-app-bar-nav-icon>
       <v-toolbar-title>
         マイアドレス帳
       </v-toolbar-title>
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import SideNav from "./components/SideNav";
 
 export default {
@@ -24,5 +25,8 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    ...mapActions(["toggleSideMenu"]),
+  },
 };
 </script>
