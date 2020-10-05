@@ -29,6 +29,17 @@ export default new Vuex.Store({
     setLoginUser({ commit }, user) {
       commit("setLoginUser", user);
     },
+    fetchAddresses({ getters, commit }) {
+      firebase
+        .firestore()
+        .collection(`users/${getters.uid}/addresses`)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) =>
+            commit("addAddress", { id: doc.id, address: doc.data() })
+          );
+        });
+    },
     deleteLoginUser({ commit }) {
       commit("deleteLoginUser");
     },
