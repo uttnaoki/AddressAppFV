@@ -66,7 +66,6 @@ export default {
       } else {
         this.addAddress(this.address);
       }
-      this.addAddress(this.address);
       this.$router.push({ name: "addresses" });
       this.address = {};
     },
